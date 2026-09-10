@@ -1,0 +1,28 @@
+.env
+.env.*
+!.env.example
+
+# Build output
+**/bin/
+**/obj/
+publish/
+*.zip
+
+# Local development database and logs
+**/*.db
+**/logs/
+
+# Test results and coverage
+**/TestResults/
+**/coverage/
+
+# IDE / OS
+.vs/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Temporary Office files
+~$*.docx
+~$*.xlsx
+~$*.pptx

@@ -1,0 +1,70 @@
+<mxfile host="app.diagrams.net" modified="2026-09-10T15:20:00.000Z" agent="Mozilla/5.0" version="24.7.17" type="device">
+  <diagram id="arquitetura-azure" name="Arquitetura Azure">
+    <mxGraphModel dx="1600" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="azure" value="Azure Subscription" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#64748B;strokeWidth=2;fontStyle=1;fontSize=18;verticalAlign=top;spacingTop=12;" vertex="1" parent="1">
+          <mxGeometry x="330" y="80" width="1050" height="600" as="geometry"/>
+        </mxCell>
+        <mxCell id="rg" value="Resource Group: rg-dobu" style="swimlane;html=1;rounded=1;horizontal=1;startSize=34;fillColor=#EEF2FF;strokeColor=#4F46E5;strokeWidth=2;fontStyle=1;fontSize=16;" vertex="1" parent="azure">
+          <mxGeometry x="25" y="55" width="1000" height="515" as="geometry"/>
+        </mxCell>
+        <mxCell id="plan" value="App Service Plan&#xa;Linux / B1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F2FE;strokeColor=#0284C7;strokeWidth=2;fontStyle=1;fontSize=15;" vertex="1" parent="rg">
+          <mxGeometry x="35" y="75" width="180" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="app" value="Azure App Service&#xa;ASP.NET Core Web API&#xa;.NET 9" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#2563EB;strokeWidth=2;fontStyle=1;fontSize=16;" vertex="1" parent="rg">
+          <mxGeometry x="270" y="70" width="260" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="api" value="Controllers&#xa;CRUD PET + CONSULTA" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EFF6FF;strokeColor=#60A5FA;fontSize=14;" vertex="1" parent="rg">
+          <mxGeometry x="285" y="205" width="230" height="65" as="geometry"/>
+        </mxCell>
+        <mxCell id="ef" value="Entity Framework Core&#xa;Npgsql" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EFF6FF;strokeColor=#60A5FA;fontSize=14;" vertex="1" parent="rg">
+          <mxGeometry x="285" y="315" width="230" height="65" as="geometry"/>
+        </mxCell>
+        <mxCell id="health" value="Health Checks&#xa;/health/ready" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EFF6FF;strokeColor=#60A5FA;fontSize=14;" vertex="1" parent="rg">
+          <mxGeometry x="570" y="205" width="190" height="65" as="geometry"/>
+        </mxCell>
+        <mxCell id="db" value="Azure Database for PostgreSQL&#xa;Flexible Server&#xa;Banco PaaS: dobu" style="shape=cylinder;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#DCFCE7;strokeColor=#16A34A;strokeWidth=2;fontStyle=1;fontSize=15;" vertex="1" parent="rg">
+          <mxGeometry x="650" y="310" width="285" height="105" as="geometry"/>
+        </mxCell>
+        <mxCell id="tables" value="Tabelas core&#xa;PET  ↔  CONSULTA" style="shape=cylinder;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#F0FDF4;strokeColor=#4ADE80;fontSize=14;" vertex="1" parent="rg">
+          <mxGeometry x="685" y="455" width="215" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="client" value="Cliente / Navegador&#xa;Swagger UI&#xa;HTTPS" style="shape=mxgraph.basic.person;whiteSpace=wrap;html=1;fillColor=#E8F1FB;strokeColor=#2563EB;strokeWidth=2;fontStyle=1;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="50" y="280" width="210" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="cli" value="Azure CLI&#xa;az group&#xa;az postgres flexible-server&#xa;az webapp / deploy config-zip" style="shape=note;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#EA580C;strokeWidth=2;fontStyle=1;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="45" y="500" width="235" height="125" as="geometry"/>
+        </mxCell>
+        <mxCell id="note" value="Opção escolhida: App Service + Banco PaaS&#xa;Sem Docker, ACR ou ACI" style="shape=note;whiteSpace=wrap;html=1;fillColor=#FEF2F2;strokeColor=#DC2626;strokeWidth=2;fontStyle=1;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="700" y="725" width="330" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="e1" value="HTTPS / REST" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563EB;strokeWidth=2;endArrow=block;" edge="1" parent="1" source="client" target="app">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" value="hospeda" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0284C7;endArrow=block;" edge="1" parent="1" source="plan" target="app">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3" value="processa" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563EB;endArrow=block;" edge="1" parent="1" source="app" target="api">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e4" value="acessa dados" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563EB;endArrow=block;" edge="1" parent="1" source="api" target="ef">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e5" value="TLS / 5432&#xa;leitura e persistência" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#16A34A;strokeWidth=2;endArrow=block;" edge="1" parent="1" source="ef" target="db">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e6" value="dados" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#16A34A;endArrow=block;" edge="1" parent="1" source="db" target="tables">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e7" value="provisiona e publica" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#EA580C;strokeWidth=2;dashed=1;endArrow=block;" edge="1" parent="1" source="cli" target="rg">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e8" value="verifica disponibilidade" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#60A5FA;dashed=1;endArrow=block;" edge="1" parent="1" source="app" target="health">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
