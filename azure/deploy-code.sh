@@ -6,7 +6,7 @@ if [[ $# -ne 2 ]]; then
   exit 1
 fi
 
-for command_name in az dotnet zip; do
+for command_name in az dotnet 7z; do
   if ! command -v "$command_name" >/dev/null 2>&1; then
     echo "Erro: comando obrigatório não encontrado: $command_name" >&2
     exit 1
@@ -29,7 +29,7 @@ dotnet publish "$ROOT/DOBU/Dobu.Api/Dobu.Api.csproj" \
 echo "[2/3] Gerando pacote ZIP com os arquivos publicados na raiz..."
 (
   cd "$PUBLISH_DIR"
-  zip -qr "$ZIP_PATH" .
+  7z a -tzip "$ZIP_PATH" .
 )
 
 echo "[3/3] Enviando pacote ao Azure App Service via Azure CLI..."
