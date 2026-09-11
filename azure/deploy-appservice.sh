@@ -1,4 +1,3 @@
-```bash
 #!/usr/bin/env bash
 set -euo pipefail
 
@@ -193,4 +192,3 @@ echo "Próximos passos:"
 echo "  1. Execute script_bd.sql com psql (consulte o README.md)."
 echo "  2. Publique a API com: ./azure/deploy-code.sh '$RG' '$APP'"
 echo "  3. Acesse: https://${APP}.azurewebsites.net/swagger"
-```

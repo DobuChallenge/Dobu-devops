@@ -1,4 +1,3 @@
-```bash
 #!/usr/bin/env bash
 set -euo pipefail
 
@@ -50,4 +49,3 @@ echo
 echo "Deploy concluído."
 echo "Swagger: https://${APP}.azurewebsites.net/swagger"
 echo "Health : https://${APP}.azurewebsites.net/health/ready"
-```

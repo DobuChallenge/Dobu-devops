@@ -140,7 +140,7 @@ cd Dobu-Devops
 * Git;
 * .NET 9 SDK;
 * Azure CLI;
-* `psql` (cliente PostgreSQL);
+* `psql` (cliente PostgreSQL );
 * 7-Zip;
 * `curl`.
 
@@ -170,7 +170,7 @@ az account show --output table
 O Azure Database for PostgreSQL Flexible Server utiliza a regra `0.0.0.0` para permitir conexões originadas de serviços da Azure. Para executar `psql` diretamente no computador utilizado na demonstração, obtenha o IP público e informe-o ao script:
 
 ```bash
-export CLIENT_IP="$(curl -s https://api.ipify.org)"
+export CLIENT_IP="$(curl -s https://api.ipify.org )"
 
 echo "$CLIENT_IP"
 ```
@@ -297,7 +297,7 @@ JOIN CONSULTA C ON C.ID_PET_FK = P.ID_PET_PK;
 Para consultar os veterinários disponíveis para a demonstração:
 
 ```sql
-SELECT ID_USUARIO_PK, NOME_USUARIO, EMAIL_USUARIO, TIPO_USUARIO
+SELECT ID_USUARIO_PK, NOME_USUARIO, DESC_EMAIL, TIPO_USUARIO
 FROM USUARIO
 WHERE LOWER(TIPO_USUARIO) LIKE '%veter%'
 ORDER BY NOME_USUARIO;
@@ -485,7 +485,7 @@ A confirmação final da exclusão do pet será realizada na seção 9.3.
 
 ---
 
-# 9.2 CRUD da tabela CONSULTA relacionada ao PET
+## 9.2 CRUD da tabela CONSULTA relacionada ao PET
 
 A tabela `CONSULTA` possui relacionamento com `PET` por meio de `ID_PET_FK`.
 
@@ -495,10 +495,10 @@ Antes do POST, confirme o ID do veterinário que será utilizado:
 SELECT
     ID_USUARIO_PK,
     NOME_USUARIO,
-    EMAIL_USUARIO,
+    DESC_EMAIL,
     TIPO_USUARIO
 FROM USUARIO
-WHERE LOWER(TIPO_USUARIO) LIKE '%veter%';
+WHERE LOWER(TIPO_USUARIO ) LIKE '%veter%';
 ```
 
 Utilize o ID retornado como:
